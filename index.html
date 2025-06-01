@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Malikrehan Mehaboob Balapravesh | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #c3ecff 0%, #e9f5ff 100%);
+      color: #222;
+      overflow-x: hidden;
+    }
+    header {
+      background: #1b1f72;
+      color: #fff;
+      padding: 20px 0 40px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    }
+    .profile-img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #66a6ff;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+      margin-bottom: 15px;
+    }
+    h1 {
+      font-weight: 800;
+      font-size: 2.5rem;
+      margin: 0 0 8px;
+      letter-spacing: 2px;
+      text-shadow: 1px 1px 6px #3a5afcaa;
+    }
+    p.subtitle {
+      font-weight: 600;
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-top: 0;
+    }
+    .menu-button {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      background: #ffffffcc;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 26px;
+      cursor: pointer;
+      color: #1b1f72;
+      user-select: none;
+      transition: background 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .menu-button:hover {
+      background: #66a6ff;
+      color: #fff;
+      box-shadow: 0 4px 14px #66a6ffaa;
+    }
+    .menu-dropdown {
+      display: none;
+      position: absolute;
+      top: 70px;
+      right: 25px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+      padding: 10px 0;
+      width: 160px;
+      font-weight: 600;
+      user-select: none;
+      z-index: 1000;
+    }
+    .menu-dropdown a {
+      display: block;
+      padding: 12px 20px;
+      color: #1b1f72;
+      text-decoration: none;
+      transition: background 0.25s ease;
+    }
+    .menu-dropdown a:hover {
+      background: #66a6ff;
+      color: white;
+    }
+    main {
+      max-width: 850px;
+      margin: 40px auto 80px;
+      background: #ffffffcc;
+      padding: 30px 40px;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      min-height: 500px;
+      position: relative;
+      overflow-y: auto;
+      animation: fadeInUp 0.7s ease forwards;
+    }
+    section {
+      display: none;
+      animation: fadeInUp 0.7s ease forwards;
+    }
+    section.active {
+      display: block;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    h2 {
+      font-weight: 700;
+      font-size: 1.9rem;
+      color: #1b1f72;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #66a6ff;
+      padding-bottom: 6px;
+      letter-spacing: 0.04em;
+    }
+    #home p {
+      color: #1b1f72;
+      font-size: 1.15rem;
+      line-height: 1.7;
+    }
+    p, li {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #333;
+    }
+    ul {
+      padding-left: 18px;
+    }
+    .project {
+      background: #e8f0fe;
+      padding: 18px 22px;
+      margin: 15px 0;
+      border-radius: 14px;
+      box-shadow: 0 3px 10px #66a6ff33;
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+    .project:hover {
+      transform: scale(1.04);
+      box-shadow: 0 6px 20px #3a5afc88;
+    }
+    .education-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    .education-table th, .education-table td {
+      border: 1px solid #ccc;
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 1rem;
+      vertical-align: top;
+    }
+    .education-table th {
+      background: #66a6ff;
+      color: white;
+      font-weight: 700;
+    }
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .skill {
+      background: #66a6ff;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 3px 8px #3a5afcaa;
+      user-select: none;
+    }
+    .contact a {
+      display: block;
+      margin: 12px 0;
+      color: #1b1f72;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .contact a:hover {
+      color: #4455ff;
+    }
+    .next-button, .back-button {
+      margin: 30px auto 0;
+      display: block;
+      background-color: #4455ff;
+      color: white;
+      border: none;
+      padding: 14px 36px;
+      border-radius: 30px;
+      font-size: 1.15rem;
+      cursor: pointer;
+      box-shadow: 0 5px 20px #4455ffaa;
+      transition: background-color 0.3s ease;
+      user-select: none;
+      max-width: 160px;
+      text-align: center;
+    }
+    .next-button:hover, .back-button:hover {
+      background-color: #2d3ac7;
+    }
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      max-width: 350px;
+      margin: 30px auto 0;
+    }
+    .download-cv-button {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #1b1f72;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 28px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease;
+    }
+    .download-cv-button:hover {
+      background-color: #3542a5;
+    }
+    .get-in-touch-button {
+      display: block;
+      margin: 40px auto 0;
+      background-color: #1b1f72;
+      color: white;
+      padding: 14px 36px;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 5px 20px #1b1f72cc;
+      transition: background-color 0.3s ease;
+      user-select: none;
+      text-align: center;
+      max-width: 240px;
+      text-decoration: none;
+    }
+    .get-in-touch-button:hover {
+      background-color: #3542a5;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <button class="menu-button" aria-label="Menu" id="menuBtn">&#9776;</button>
+  <div class="menu-dropdown" id="menuDropdown" role="menu" aria-hidden="true">
+    <a href="#" data-target="home" role="menuitem">Home</a>
+    <a href="#" data-target="projects" role="menuitem">Projects</a>
+    <a href="#" data-target="education" role="menuitem">Education</a>
+    <a href="#" data-target="skills" role="menuitem">Technical Skills</a>
+    <a href="#" data-target="contact" role="menuitem">Contact</a>
+  </div>
+  <img src="image.jpg" alt="Photo of Malikrehan Mehaboob Balapravesh" class="profile-img" />
+  <h1>Malikrehan Mehaboob Balapravesh</h1>
+  <p class="subtitle">Aspiring Full Stack Developer & Deep Learning Enthusiast</p>
+</header>
+
+<main>
+  <section id="home" class="active" aria-label="Home Section">
+    <h2>Hello, I'm Malikrehan Mehaboob Balapravesh</h2>
+    <p>
+      A passionate Computer Science engineering student specializing in full stack web development, data structures, and algorithms. Enthusiastic about building scalable applications and exploring deep learning techniques to solve real-world problems.
+      Currently pursuing my B.E. in Computer Science at HMSIT Tumkur. Welcome to my portfolio!
+    </p>
+    <button class="next-button" onclick="showSection('projects')">Next &rarr;</button>
+  </section>
+
+  <section id="projects" aria-label="Projects Section">
+    <h2>Projects</h2>
+    <ul>
+      <li class="project">
+        <strong>Monkey Pox Detection using Deep Learning:</strong> Developed a convolutional neural network (CNN) model using TensorFlow and Keras to accurately identify Monkey Pox infection from skin lesion images. The model achieved over 90% accuracy, helping to facilitate early diagnosis and timely medical intervention.
+      </li>
+      <li class="project">
+        <strong>3D Modeling of Gol Gumbaz:</strong> Created detailed 3D digital models of the iconic Gol Gumbaz monument using AutoCAD and Blender. The models were used for educational visualization, architectural studies, and virtual tours.
+      </li>
+      <li class="project">
+        <strong>Hostel Management System:</strong> Designed and developed a full-stack web application with React.js frontend and Node.js backend for managing hostel room allocation, student details, fee tracking, and maintenance requests, improving operational efficiency by 30%.
+      </li>
+      <li class="project">
+        <strong>Full Stack Web Development:</strong> Built multiple dynamic websites using HTML, CSS, JavaScript, Bootstrap, and backend technologies like Express.js and MongoDB. Projects include e-commerce portals, portfolio websites, and blog platforms with responsive design and user authentication.
+      </li>
+      <li class="project">
+        <strong>Foot Power Generation Using Arduino:</strong> Created an energy-harvesting device using Arduino and sensors to convert footstep pressure into electrical energy, demonstrating an innovative solution for renewable power in remote areas.
+      </li>
+      <!-- Removed IoT-based project as requested -->
+    </ul>
+    <div class="button-group">
+      <button class="back-button" onclick="showSection('home')">&larr; Back</button>
+      <button class="next-button" onclick="showSection('education')">Next &rarr;</button>
+    </div>
+  </section>
+
+  <section id="education" aria-label="Education Section">
+    <h2>Education</h2>
+    <table class="education-table" summary="Educational qualifications and institutions">
+      <thead>
+        <tr>
+          <th>Degree</th>
+          <th>Institution</th>
+          <th>Year</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>B.E. in Computer Science & Engineering</td>
+          <td>HMSIT Tumkur</td>
+          <td>2021 - 2025 (Expected)</td>
+          <td>Current CGPA: 8.15 / 10</td>
+        </tr>
+        <tr>
+          <td>Diploma in Mechanical Engineering</td>
+          <td>Gomatesh Polytechnic, Belgaum</td>
+          <td>2018 - 2021</td>
+          <td>Completed with 78% - Project: Foot Power Generation Using Arduino</td>
+        </tr>
+        <tr>
+          <td>10th Standard (Matriculation)</td>
+          <td>Karnataka Secondary Education Examination Board</td>
+          <td>2018</td>
+          <td>Completed with 81% marks</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="button-group">
+      <button class="back-button" onclick="showSection('projects')">&larr; Back</button>
+      <button class="next-button" onclick="showSection('skills')">Next &rarr;</button>
+    </div>
+  </section>
+
+  <section id="skills" aria-label="Technical Skills Section">
+    <h2>Technical Skills</h2>
+    <div class="skills-list">
+      <span class="skill">Data Structures & Algorithms</span>
+      <span class="skill">HTML5</span>
+      <span class="skill">CSS3</span>
+      <span class="skill">JavaScript</span>
+      <span class="skill">Bootstrap</span>
+      <span class="skill">C++</span>
+      <span class="skill">GitHub</span>
+      <span class="skill">React.js</span>
+      <span class="skill">Node.js</span>
+      <span class="skill">Blender (3D Modeling)</span>
+      <!-- Removed MongoDB, TensorFlow/Keras, AutoCAD, Arduino -->
+    </div>
+    <div class="button-group">
+      <button class="back-button" onclick="showSection('education')">&larr; Back</button>
+      <button class="next-button" onclick="showSection('contact')">Next &rarr;</button>
+    </div>
+  </section>
+
+  <section id="contact" aria-label="Contact Section">
+    <h2>Contact Me</h2>
+       <div class="contact">
+      <a href="tel:+918050601538" aria-label="Call Malikrehan Mehaboob Balapravesh">Phone: +91 80506 01538</a>
+      <a href="mailto:rehanbalapravesh5164@gmail.com" aria-label="Email Malikrehan Mehaboob Balapravesh">Email: rehanbalapravesh5164@gmail.com</a>
+      <a href="https://github.com/Rehan8050" target="_blank" rel="noopener" aria-label="GitHub profile of Malikrehan Mehaboob Balapravesh">GitHub: github.com/malikrehan</a>
+      <a href="https://www.linkedin.com/in/rehan-balapravesh-01631a352/" target="_blank" rel="noopener" aria-label="LinkedIn profile of Malikrehan Mehaboob Balapravesh">LinkedIn: linkedin.com/in/rehan-balapravesh-01631a352</a>
+
+    </div>
+    <a href="malikrehan_cv.pdf" class="download-cv-button" download aria-label="Download Malikrehan Mehaboob Balapravesh's CV">Download CV</a>
+    <a href="mailto:rehanbalapravesh5164@gmail.com?subject=Contact from Portfolio Website" class="get-in-touch-button" aria-label="Send email to Malikrehan Mehaboob Balapravesh">Get in Touch</a>
+    <div class="button-group" style="margin-top:40px;">
+      <button class="back-button" onclick="showSection('skills')">&larr; Back</button>
+      <button class="next-button" onclick="showSection('home')">Home &rarr;</button>
+    </div>
+  </section>
+</main>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const menuDropdown = document.getElementById('menuDropdown');
+  const links = menuDropdown.querySelectorAll('a');
+
+  menuBtn.addEventListener('click', () => {
+    const expanded = menuDropdown.style.display === 'block';
+    menuDropdown.style.display = expanded ? 'none' : 'block';
+    menuDropdown.setAttribute('aria-hidden', expanded ? 'true' : 'false');
+  });
+
+  // Close menu if clicking outside
+  document.addEventListener('click', (e) => {
+    if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
+      menuDropdown.style.display = 'none';
+      menuDropdown.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+  // Show section based on menu or button clicks
+  function showSection(sectionId) {
+    const sections = document.querySelectorAll('main section');
+    sections.forEach(section => {
+      section.classList.toggle('active', section.id === sectionId);
+    });
+    menuDropdown.style.display = 'none';
+    menuDropdown.setAttribute('aria-hidden', 'true');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  // Attach click events for menu links
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = e.target.getAttribute('data-target');
+      showSection(target);
+    });
+  });
+</script>
+
+</body>
+</html>
